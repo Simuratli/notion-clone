@@ -7,18 +7,14 @@ import { api } from '@/convex/_generated/api'
 import { Id } from '@/convex/_generated/dataModel'
 import { useMutation, useQuery } from 'convex/react'
 import dynamic from 'next/dynamic'
+import { useParams } from 'next/navigation'
 
 
 
-interface DocumentIdPageProps {
-  params: Promise<{
-    documentId: Id<"documents">;
-  }>;
-}
-
-const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
+const DocumentIdPage = () => {
+  const params = useParams()
   const update = useMutation(api.documents.update)
-   const { documentId } = await params
+ const documentId = params.documentId as Id<"documents">;
   const document = useQuery(api.documents.getById, {
     documentId
   })
