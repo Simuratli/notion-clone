@@ -10,7 +10,7 @@ import {
   Trash,
 } from "lucide-react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import React, { Ref, RefObject, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./user-item";
 import { useMutation } from "convex/react";
@@ -78,22 +78,22 @@ const Navigation = () => {
     document.removeEventListener("mouseup", handleMouseUp);
   };
 
-  const resetWidth = () => {
-    if (sidebarRef.current && navbarRef.current) {
-      setIsCollapsed(false);
-      setIsResetting(true);
-      sidebarRef.current.style.width = isMobile ? "100%" : "240px";
-      navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
-      navbarRef.current.style.setProperty(
-        "width",
-        isMobile ? "0" : `calc(100% - 240px)`
-      );
+const resetWidth = React.useCallback(() => {
+  if (sidebarRef.current && navbarRef.current) {
+    setIsCollapsed(false);
+    setIsResetting(true);
+    sidebarRef.current.style.width = isMobile ? "100%" : "240px";
+    navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
+    navbarRef.current.style.setProperty(
+      "width",
+      isMobile ? "0" : `calc(100% - 240px)`
+    );
 
-      setTimeout(() => {
-        setIsResetting(false);
-      }, 300);
-    }
-  };
+    setTimeout(() => {
+      setIsResetting(false);
+    }, 300);
+  }
+}, [isMobile]);
 
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
@@ -114,7 +114,7 @@ const Navigation = () => {
     } else {
       resetWidth();
     }
-  }, [isMobile]);
+  }, [resetWidth,isMobile]);
 
   useEffect(() => {
     if (isMobile) {

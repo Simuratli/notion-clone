@@ -3,7 +3,6 @@ import { UploaderProvider, UploadFn } from "./upload/uploader-provider";
 import { SingleImageDropzone } from "./upload/single-image";
 import { useEdgeStore } from "@/lib/edgestore";
 import { Id } from "@/convex/_generated/dataModel";
-import { DropzoneOptions } from "react-dropzone";
 
 import { useParams } from "next/navigation";
 import { useMutation } from "convex/react";
@@ -41,7 +40,7 @@ const SingleImage = () => {
       // to add the necessary data to your database
       return res;
     },
-    [edgestore]
+    [edgestore, coverImage.url, params.documentId, update]
   );
 
   return (

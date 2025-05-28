@@ -3,7 +3,6 @@ import React from "react";
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import { useCoverImage } from "@/hooks/use-cover-image";
 import SingleImage from "../single-image-dropzone";
-import { useParams } from "next/navigation";
 
 
 const CoverImageModal = () => {

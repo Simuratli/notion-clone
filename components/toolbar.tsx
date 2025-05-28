@@ -14,7 +14,6 @@ interface ToolbarProps {
   preview?: boolean;
 }
 
-const onIconSelect = () => {};
 
 const Toolbar = ({ initialData, preview }: ToolbarProps) => {
 

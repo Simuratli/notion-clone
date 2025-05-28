@@ -2,7 +2,6 @@
 import { Id } from '@/convex/_generated/dataModel'
 import React from 'react'
 import {DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuItem,DropdownMenuSeparator} from '@/components/ui/dropdown-menu'
-import { useRouter } from 'next/navigation'
 import { useUser } from '@clerk/clerk-react'
 import { useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
@@ -16,7 +15,6 @@ interface MenuPropTypes {
 }
 
 const Menu = ({documentId}:MenuPropTypes) => {
-    const router = useRouter()
     const {user} = useUser()
     const archive = useMutation(api.documents.archive);
 

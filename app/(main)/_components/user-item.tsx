@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger  } from '@/components/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger  } from '@/components/ui/dropdown-menu'
 import { ChevronsLeftRight } from 'lucide-react'
 import { SignOutButton, useUser } from '@clerk/clerk-react'
 const UserItem = () => {
