@@ -14,9 +14,10 @@ const DocumentIdPage = ({
 }: {
   params: { documentId: string };
 }) => {
-  const update = useMutation(api.documents.update);
+  // Convert to Convex ID
   const documentId = params.documentId as Id<"documents">;
 
+  const update = useMutation(api.documents.update);
   const document = useQuery(api.documents.getById, {
     documentId,
   });
