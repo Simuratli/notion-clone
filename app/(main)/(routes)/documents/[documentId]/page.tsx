@@ -9,17 +9,12 @@ import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import dynamic from "next/dynamic";
 
-// ✅ Correct type for page props from Next.js
-interface DocumentIdPageProps {
-  params: {
-    documentId: string; // must be string initially
-  };
-}
-
-const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
+const DocumentIdPage = ({
+  params,
+}: {
+  params: { documentId: string };
+}) => {
   const update = useMutation(api.documents.update);
-
-  // 🔁 convert documentId string to Convex Id
   const documentId = params.documentId as Id<"documents">;
 
   const document = useQuery(api.documents.getById, {
