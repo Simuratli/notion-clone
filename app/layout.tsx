@@ -6,7 +6,6 @@ import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "sonner";
 import ModalProvider from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
-export const dynamic = 'force-dynamic';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
