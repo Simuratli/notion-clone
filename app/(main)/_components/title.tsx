@@ -1,3 +1,4 @@
+"use client";
 import { Doc } from '@/convex/_generated/dataModel'
 import React, { useRef, useState } from 'react'
 import { useMutation } from 'convex/react'

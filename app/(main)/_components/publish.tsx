@@ -1,3 +1,5 @@
+
+"use client";
 import { Doc } from "@/convex/_generated/dataModel";
 import React, { useState } from "react";
 import {

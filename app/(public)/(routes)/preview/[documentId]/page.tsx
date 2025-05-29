@@ -1,14 +1,13 @@
 "use client";
-import React, { useMemo } from "react";
+import React from "react";
 import Cover from "@/components/cover";
 import Toolbar from "@/components/toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
-import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
-
+import Editor from "@/components/editor";
 
 
 const PublicPage = () => {
@@ -18,11 +17,6 @@ const PublicPage = () => {
   const document = useQuery(api.documents.getById, {
     documentId,
   });
-
-  const Editor = useMemo(
-    () => dynamic(() => import("@/components/editor"), { ssr: false }),
-    []
-  );
 
   const onChange = (content: string) => {
     update({

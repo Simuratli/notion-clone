@@ -1,3 +1,4 @@
+"use client";
 import ConfirmModal from "@/components/modals/confirmmodal";
 import Spinner from "@/components/spinner";
 import { Input } from "@/components/ui/input";

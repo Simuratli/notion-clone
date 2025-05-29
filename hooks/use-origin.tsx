@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 
 export const useOrigin = () => {
-  const [mounted, setMounted] = useState(false);
-  const origin =
-    typeof window !== undefined && window.location.origin
-      ? window.location.origin
-      : "";
+  const [origin, setOrigin] = useState("");
 
   useEffect(() => {
-    setMounted(true);
+    if (typeof window !== "undefined") {
+      setOrigin(window.location.origin);
+    }
   }, []);
 
-  if (mounted === false) {
-    return "";
-  }
   return origin;
 };

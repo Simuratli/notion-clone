@@ -6,6 +6,7 @@ import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { Toaster } from "sonner";
 import ModalProvider from "@/components/providers/modal-provider";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+export const dynamic = 'force-dynamic';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,24 +42,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ConvexClientProvider>
-          <EdgeStoreProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ConvexClientProvider>
+            <EdgeStoreProvider>
               {children}
               <Toaster position="bottom-center" />
               <ModalProvider />
-            </ThemeProvider>
-          </EdgeStoreProvider>
-        </ConvexClientProvider>
+            </EdgeStoreProvider>
+          </ConvexClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
